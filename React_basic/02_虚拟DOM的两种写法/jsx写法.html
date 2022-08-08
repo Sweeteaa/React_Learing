@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx</title>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 用于react支持DOM操作 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- jsx转换为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        const VDOM =
+        <h1 id="title">Hello,React</h1>
+        ReactDOM.render(VDOM, document.getElementById('test'))
+    </script>
+    <!-- 1.虚拟DOM本质是object类型对象 -->
+    <!-- 2.虚拟DOM比较“轻”，真实DOM比较“重”，因为虚拟DOM只在react内部使用，无需真实DOM这么多属性 -->
+    <!-- 3.虚拟DOM最终会转变成为真实DOM呈现在页面上 -->
+</body>
+
+</html>
