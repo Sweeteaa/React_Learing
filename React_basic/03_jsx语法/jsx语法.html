@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hello react</title>
+    <style>
+        .title {
+            background-color: pink;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,11 +22,28 @@
 
     <script type="text/babel">
         const VDOM =
-        <h2 id="a">
-            <span>hello react</span>
-        </h2>
+        <div>
+            <h2 className="title">
+                <span>hello react</span>
+            </h2>
+            <h2 className="title">
+                <span>hello react</span>
+            </h2>
+        </div>
+
         ReactDOM.render(VDOM, document.getElementById('test'))
+
+
     </script>
 </body>
+
+<!-- jsx语法规则：
+    1.定义虚拟DOM时，不要写引号
+    2.标签中混入Js表达式时要加{}
+    3.样式的类名指定不要用class，要用className
+    4.内联样式，要用style={{key:value}}的样式去写
+    5.虚拟DOM只有一个根标签
+    6.标签必须闭合
+-->
 
 </html>
