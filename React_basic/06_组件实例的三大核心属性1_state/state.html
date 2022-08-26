@@ -23,15 +23,46 @@
         class Weather extends React.Component{
             constructor(props){
                 super(props)
+                //初始化状态
                 this.state = {isHot: false}
+                //解决changeWeather中this指向问题，在Weather的原型对象中新建了changeWeather函数
+                this.changeWeather = this.changeWeather.bind(this)
             }
             render(){
+                //render里的this是实例对象
                 console.log(this);
-                return <h1>今天天气很{this.state.isHot ? '炎热': '凉爽'}</h1>
+                //绑定事件：函数不加括号，双引号，onClick大写0
+                return <h1 onClick={this.changeWeather}>今天天气很{this.state.isHot ? '炎热': '凉爽'}</h1>
+            }
+            changeWeather() {
+                //changeWeather放在Weather的原型对象上，供实例使用
+                //通过Person实例调用speak时，speak中dethis就是Person实例
+                //changeWeather是作为onClick的回调，所以不是通过实例调用，是直接调用
+                //类中的方法默认开启了严格模式，所以changeWeather中的this为undefined
+                // console.log(this.state.isHot)
+                const isHot = this.state.isHot
+                //状态不可直接更改，要借助内置api更改(setState)，且更新是一种合并不是替换
+                // this.state.isHot = !isHot //这是错误的，状态state不可直接更改
+                this.setState({isHot: !isHot})
+
             }
         }
         //2.渲染组件到页面
         ReactDOM.render(<Weather/>,document.getElementById('test'))
+
+        // const title = document.getElementById('title')
+        // title.addEventListener('click', ()=>{
+        //     console.log('标题被点击了')
+        // })
+
+        // const title = document.getElementById('title')
+        // title.onclick = ()=>{
+        //     console.log('标题被点击了')
+        // }
+
+        
+
+
     </script>
 </body>
 
