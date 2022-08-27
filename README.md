@@ -42,3 +42,12 @@ JS + XML本质是React.createElement(component, props, ...children)方法的�
    - a) 强制绑定this: 通过函数对象的bind()
    - b) 箭头函数
 3. 状态数据，不能直接修改或更新，需要借助**setState()**
+
+## props
+1. 每个组件对象都会有props(properties的简写)属性
+2. 组件标签的所有属性都保存在props中
+
+##### 作用：通过标签属性从组件外向组件内传递变化的数据 **注意: 组件内部不要修改props数据**
+
+## refs
+- 组件内的标签可以定义ref属性来标识自己

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_回调函数形式的ref</title>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 用于react支持DOM操作 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- jsx转换为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //创建组件
+        class Demo extends React.Component{
+            //展示左侧输入框的数据
+            showData = ()=>{
+                const {input1} = this
+                alert(input1.value)
+            }
+            showData2 = ()=>{
+                const {input2} = this
+                alert(input2.value)
+            }
+            render(){
+                return(
+                    //ref相当于原生的id
+                    <div>
+                        <input ref={(currentNode)=>{this.input1 = currentNode}} type="text" placeholder="点击按钮提示数据"/>
+                        <button onClick={this.showData}>点我提示左侧数据</button>
+                        <input onBlur={this.showData2} ref={(currentNode)=>{this.input2 = currentNode}} type="text" placeholder="失去焦点提示数据"/>
+                    </div>
+                )
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Demo/>,document.getElementById('test'))
+    </script>
+</body>
+
+</html>
