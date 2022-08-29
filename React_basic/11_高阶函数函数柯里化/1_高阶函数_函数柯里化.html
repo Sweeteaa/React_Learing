@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_受控组件</title>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 用于react支持DOM操作 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- jsx转换为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //函数柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式
+        class Login extends React.Component{
+            state = {
+                username: '',
+                password: ''
+            }
+            //保存表单数据到状态中
+            //saveFormData是高阶函数：1、若A函数接收的参数是一个函数，A可称为高阶函数 2、调用的返回值仍是一个函数，A可称为高阶函数
+            //常见高阶函数：1、promise 2、定时器 3、arr.map()...
+            saveFormData = (dataType)=>{
+                return (event)=>{
+                    this.setState({[dataType]:event.target.value})
+                }
+            }
+            //表单提交的回调
+            handleSubmit = (event) =>{
+                //阻止表单默认事件提交刷新
+                event.preventDefault();
+                const {username, password} = this.state
+                alert(`你输入的用户名：${username}，你输入的密码：${password}`)
+            }
+            render(){
+                //必须将一个函数传给onChange
+                return(
+                    <from onSubmit = {this.handleSubmit}>
+                        用户名：<input onChange={this.saveFormData('username')} type = "text" name="username"/>
+                        密码：<input onChange={this.saveFormData('password')} type = "password" name="password"/>
+                        <button>登录</button>
+                    </from>
+                )
+            }
+        }
+
+        ReactDOM.render(<Login/>, document.getElementById('test'))
+    </script>
+</body>
+
+</html>
