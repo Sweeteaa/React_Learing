@@ -52,8 +52,36 @@ JS + XML本质是React.createElement(component, props, ...children)方法的�
 ## refs
 - 组件内的标签可以定义ref属性来标识自己
 
+***
+
 ## 生命周期
 #### 旧生命周期
+![react生命周期(旧)](https://user-images.githubusercontent.com/88074316/187479246-47ba37d4-637c-478d-8943-1c1ad5b89e9e.png)
+1. 初始化阶段: 由ReactDOM.render()触发---初次渲染
+    1. constructor()
+    2. componentWillMount()
+    3. render()
+    4. componentDidMount()
+2. 更新阶段: 由组件内部this.setSate()或父组件重新render触发
+    1. shouldComponentUpdate()
+    2. componentWillUpdate()
+    3. render()
+    4. componentDidUpdate()
+3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+    1. componentWillUnmount()
 
 #### 新生命周期
-
+![react生命周期(新)](https://user-images.githubusercontent.com/88074316/187479287-da53632b-0fc0-4230-8413-55418c94fa90.png)
+1. 初始化阶段: 由ReactDOM.render()触发---初次渲染
+    1. constructor()
+    2. getDerivedStateFromProps *
+    3. render()
+    4. componentDidMount()
+2. 更新阶段: 由组件内部this.setSate()或父组件重新render触发
+    1. getDerivedStateFromProps *
+    2. shouldComponentUpdate()
+    3. render()
+    4. getSnapshotBeforeUpdate *
+    5. componentDidUpdate()
+3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+    1. componentWillUnmount()
