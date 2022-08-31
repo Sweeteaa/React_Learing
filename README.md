@@ -85,3 +85,37 @@ JS + XML本质是React.createElement(component, props, ...children)方法的�
     5. componentDidUpdate()
 3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
     1. componentWillUnmount()
+
+## 虚拟DOM与DOM Diffing算法
+![虚拟DOM与DOM Diffing算法](https://img-blog.csdnimg.cn/be950a8be5ce492b891ed4875bcd40a7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAYnVn6ZmE5L2T,size_20,color_FFFFFF,t_70,g_se,x_16)
+***
+
+## React应用(基于React脚手架)
+
+1. create-react-app ————创建react应用
+    1. 全局安装：**npm i -g create-react-app**
+    2. 切换到想创项目的目录，使用命令：**create-react-app hello-react**
+    3. 进入项目文件夹：**cd hello-react**
+    4. 启动项目：**npm start**
+
+```
+public ---- 静态资源文件夹
+		favicon.icon ------ 网站页签图标
+		index.html -------- 主页面 *
+		logo192.png ------- logo图
+		logo512.png ------- logo图
+		manifest.json ----- 应用加壳的配置文件
+		robots.txt -------- 爬虫协议文件
+src ---- 源码文件夹
+		App.css -------- App组件的样式
+		App.js --------- App组件 *
+		App.test.js ---- 用于给App做测试
+		index.css ------ 样式
+		index.js ------- 入口文件 *
+		logo.svg ------- logo图
+		reportWebVitals.js
+			--- 页面性能分析文件(需要web-vitals库的支持)
+		setupTests.js
+			---- 组件单元测试的文件(需要jest-dom库的支持)
+```
+
